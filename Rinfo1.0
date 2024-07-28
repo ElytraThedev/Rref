@@ -1,0 +1,63 @@
+import getpass
+from telnetlib import IP
+import uuid
+import platform
+import socket
+import os
+import psutil
+
+Scanner = input('\033[36m' + getpass.getuser()+  '\033[33m' + " Rref" +">> " + '\033[0m')
+
+class Rref:
+    def rGetuser():
+        if Scanner == "getuser()":
+            print(getpass.getuser())
+    def rMac_address():
+        if Scanner == "Mac_address()":
+            print(':'.join(['{:02x}'.format((uuid.getnode() >> i) & 0xff) for i in range(0, 2*6, 8)][::-1]))
+    def rPlatform():
+        if Scanner == "Platform()":
+            print(platform.system(), platform.release())
+    def rIp_address():
+        if Scanner == "Ip_address()":
+            print(socket.gethostbyname(socket.gethostname()))
+    def rEnviromentVariables():
+        if Scanner == "EnviromentVariable()":
+            nv_vars = os.environ
+            for key, value in nv_vars.items():
+                print(f'{key}: {value}')
+    def rCurrentProccessInfo():
+        if Scanner == "CurrentProccessInfo()":
+            for proc in psutil.process_iter(['pid', 'name', 'username']):
+                print(proc.info)
+
+def FinalRun():
+
+    a = 1
+    b = 1    
+
+    if a == b :
+            BoolVal = True
+
+    RunTrue = BoolVal 
+
+    if RunTrue == True:
+        def primaryRun():        
+            def run():
+                Rref.rGetuser()
+                Rref.rMac_address()
+                Rref.rPlatform()
+                Rref.rIp_address()
+                Rref.rEnviromentVariables()
+                Rref.rCurrentProccessInfo()
+
+
+        primaryRun()
+
+FinalRun()
+
+
+
+
+
+
